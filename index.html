@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva para o Ano Novo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #countdown {
+            font-size: 3em;
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="countdown"></div>
+
+<script>
+    // Definir a data-alvo para a virada do ano novo
+    const targetDate = new Date('January 1, 2024 00:00:00 GMT+0000');
+
+    function updateCountdown() {
+        const currentDate = new Date();
+        const timeDifference = targetDate - currentDate;
+
+        // Calcular dias, horas, minutos e segundos
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Exibir a contagem regressiva na página
+        document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Atualizar a contagem regressiva a cada segundo
+    setInterval(updateCountdown, 1000);
+
+    // Chamar a função inicialmente para evitar atrasos na exibição
+    updateCountdown();
+</script>
+
+</body>
+</html>
